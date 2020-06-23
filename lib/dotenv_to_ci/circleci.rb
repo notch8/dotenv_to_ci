@@ -1,6 +1,7 @@
 require 'dotenv'
 require 'json'
 require 'rest-client'
+require 'yaml'
 
 module DotenvToCI
   class CircleCI
