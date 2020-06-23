@@ -28,6 +28,10 @@ module DotenvToCI
     def load_from_env
       if @provider == "circleci"
         @token ||= ENV["CIRCLECI_TOKEN"]
+        if !@token
+          file = File.expand_path('~/.circleci/cli.yml')
+          @token = YAML.load_file(file)['token'] if File.exists?(file)
+        end
       end
     end
 
